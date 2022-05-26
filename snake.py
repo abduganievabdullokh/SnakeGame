@@ -8,7 +8,7 @@ class Snake:
     def __init__(self, parent_screen, length):
         self.length = length
         self.parent_screen = parent_screen
-        self.block = p.image.load("Properties/mario_block.jpg").convert()  # uploading image
+        self.block = p.image.load("Properties/akfalogo.jpg").convert()  # uploading image
         self.x = [main.SIZE] * length  # place in x line
         self.y = [main.SIZE] * length  # place in y line
         self.direction = "up"

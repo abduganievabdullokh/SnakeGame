@@ -1,5 +1,6 @@
 # class game file
 import pygame as p
+# import button as but
 import main
 import snake
 import apple
@@ -14,10 +15,18 @@ class Game:
         self.play_background_music()
         self.surface = p.display.set_mode((main.SCREEN_WIDTH, main.SCREEN_HEIGHT))  # width and height size
         # self.surface.fill(BACKGROUND_COLOR)  # color of background
-        self.snake = snake.Snake(self.surface, 3)
+        self.snake = snake.Snake(self.surface, 1)
         self.snake.draw()
         self.apple = apple.Apple(self.surface)
         self.apple.draw()
+
+        # p.display.set_caption("Button screen")
+        # self.screen = p.display.set_mode((main.SCREEN_WIDTH, main.SCREEN_HEIGHT))
+        # self.start_image = but.Button(140, 210, but.start_img, 0.6)
+        # self.start_image.draw(self.screen)
+        # self.exit_image = but.Button(450, 210, but.exit_img, 0.6)
+        # self.exit_image.draw(self.screen)
+
 
     def is_collision(self, x1, y1, x2, y2):
         if x2 <= x1 < x2 + main.SIZE:
@@ -42,6 +51,8 @@ class Game:
         self.surface.blit(stop_bg, (0, 0))
 
     def play(self):
+        # self.start_image.draw(self.screen)
+        # self.exit_image.draw(self.screen)
         self.back_image()
         self.snake.walk()
         self.display_score()
@@ -57,10 +68,12 @@ class Game:
 
         # colliding with itself
         for i in range(1, self.snake.length):
-            pass
-        if self.is_collision(self.snake.x[0], self.snake.y[0], self.snake.x[i], self.snake.y[i]):
-            self.play_sound("dead_mario")
-            raise "Game over"
+            if self.is_collision(self.snake.x[0], self.snake.y[0], self.snake.x[i], self.snake.y[i]):
+                self.play_sound("dead_mario")
+                raise "Game over"
+
+        #colliding with wall
+
 
     def display_score(self):
         font = p.font.SysFont("cambria", 45)
@@ -75,7 +88,7 @@ class Game:
         # line2 = font.render(f"Press Enter to play again!", True, (0, 1, 0))
         # self.surface.blit(line2, (222, 343))
         p.display.flip()
-        main.exit_button.draw(main.screen)
+        # but.exit_img.draw(self.screen)
         p.mixer.music.pause()
 
     def reset(self):
@@ -86,11 +99,11 @@ class Game:
         running = True
         pause = False
         while running:
-            main.screen.fill((111, 111, 111))
-            if main.start_button.draw(main.screen):
-                print('Start')
-            if main.exit_button.draw(main.screen):
-                running = False
+            # self.screen.fill((111, 111, 111))
+            # if self.start_image.draw(self.screen):
+            #     print('Start')
+            # if self.exit_image.draw(self.screen):
+            #     running = False
             for event in p.event.get():
                 if event.type == KEYDOWN:
                     if event.key == K_ESCAPE:

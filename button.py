@@ -27,3 +27,8 @@ class Button:
         # displaying buttons on the screen
         surface.blit(self.image, (self.rect.x, self.rect.y))
         return action
+
+
+# start_img = p.image.load('Properties/apple.jpg').convert_alpha()
+# exit_img = p.image.load('Properties/apple.jpg').convert_alpha()
+

@@ -6,7 +6,7 @@ import main
 
 class Apple:
     def __init__(self, parent_screen):
-        self.image = p.image.load("Properties/mushroom_mario.jpg").convert()
+        self.image = p.image.load("Properties/apple.jpg").convert()
         self.parent_screen = parent_screen
         self.x = random.randint(0, (main.SCREEN_WIDTH/main.SIZE)-1) * main.SIZE
         self.y = random.randint(0, (main.SCREEN_HEIGHT/main.SIZE)-1) * main.SIZE
@@ -18,5 +18,3 @@ class Apple:
     def move(self):
         self.x = random.randint(0, 29) * main.SIZE
         self.y = random.randint(0, 15) * main.SIZE
-
-
